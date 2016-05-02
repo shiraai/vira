@@ -2,8 +2,6 @@ const electron = require('electron')
 const ipcMain = require('electron').ipcMain;
 const app = electron.app
 
-// enable touch (??)
-app.commandLine.appendSwitch('--touch-devices');
 const BrowserWindow = electron.BrowserWindow
 let mainWindow
 
