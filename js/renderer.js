@@ -1,8 +1,8 @@
-// enable the developer tools
-var devtools = false;
+// enable the developer tools for the webview
+var webview_devtools = false;
 
 // get the webview
-var webview = document.querySelector('#webview-game');
+var webview = document.querySelector('webview');
 
 // add event for window resizes
 var addEvent = function(object, type, callback) {
@@ -19,7 +19,7 @@ var addEvent = function(object, type, callback) {
 
 // add listener for the dom and then add the function for the windows resize
 webview.addEventListener("dom-ready", function() {
-  if (devtools) { webview.openDevTools(); }
+  if (webview_devtools) { webview.openDevTools(); }
 
   addEvent(window, "resize", function(event) {
     var w = window.innerWidth;
