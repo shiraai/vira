@@ -1,5 +1,7 @@
+var fs = require('fs');
+
 // enable the developer tools for the webview
-var webview_devtools = true;
+var webview_devtools = false;
 
 // get the webview
 var webview = document.querySelector('webview');
@@ -21,15 +23,14 @@ var addEvent = function(object, type, callback) {
 webview.addEventListener("dom-ready", function() {
   if (webview_devtools) { webview.openDevTools(); }
   // should have our "inject" shit here in general
-  // TODO: 
+  // TODO:
   // https://gist.github.com/gyaru/d25f741d72669c1f4404630cc551ca8b#file-locallib-js-L1346
   // mute function
-  webview.insertCSS("html { overflow-x: hidden; }");
-  webview.insertCSS("::-webkit-scrollbar { width: 4px; }");
-  webview.insertCSS("::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); }");
-  webview.insertCSS("::-webkit-scrollbar-thumb { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4); }");
-  webview.insertCSS(".mask { right: -4px !important; }");
-  webview.insertCSS("#loading, #ready { right: -4px !important; }");
+
+  fs.readFile('css/webview.css', 'utf8', function(err, data) {
+    if (err) throw err;
+    webview.insertCSS(data);
+  });
 
   addEvent(window, "resize", function(event) {
     var w = window.innerWidth;

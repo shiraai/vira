@@ -1,5 +1,5 @@
 // enable the developer tools for electron ui
-var electron_devtools = false;
+var electron_devtools = true;
 
 const electron = require('electron'),
   ipcMain = require('electron').ipcMain,
