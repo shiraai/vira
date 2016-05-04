@@ -4,14 +4,20 @@
   overflow: hidden !important;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
 
-header, main, footer { position: fixed; }
+header,
+main,
+footer {
+  position: fixed;
+}
 
-header, footer {
+header,
+footer {
   background: #2b2b2b;
   color: #ebf6f7;
   font-family: Overpass, sans-serif;
