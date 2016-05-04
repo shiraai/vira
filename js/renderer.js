@@ -4,7 +4,8 @@ var fs = require('fs');
 var webview_devtools = false;
 
 // get the webview
-var webview = document.querySelector('webview');
+var app     = document.querySelector('body'),
+    webview = document.querySelector('webview');
 
 // add event for window resizes
 var addEvent = function(object, type, callback) {
@@ -30,6 +31,11 @@ webview.addEventListener("dom-ready", function() {
   fs.readFile('css/webview.css', 'utf8', function(err, data) {
     if (err) throw err;
     webview.insertCSS(data);
+  });
+
+  fs.readFile('js/create-touch.js', 'utf8', function(err, data) {
+    if (err) throw err;
+    webview.executeJavaScript(data);
   });
 
   addEvent(window, "resize", function(event) {
