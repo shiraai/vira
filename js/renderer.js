@@ -2,6 +2,7 @@ var fs = require('fs');
 
 // enable the developer tools for the webview
 var webview_devtools = false;
+var sound_always_on = true;
 
 // get the webview
 var app     = document.querySelector('body'),
@@ -47,6 +48,21 @@ webview.addEventListener("dom-ready", function() {
     webview.executeJavaScript("window.deviceRatio = window.displayInitialize();");
     webview.executeJavaScript("window.Game = Game;window.fitScreenByZoom(window.deviceRatio);");
   });
+
+  if (sound_always_on) {
+    // Currently uses setTimeout to prevent a hang
+    // Should really be in a listener for a game event to prevent this from being a race condition
+    webview.executeJavaScript(
+        " var vira_mute_saved = undefined;                "
+      + " setTimeout(function(){                          "
+      + "   require([\"lib/sound-player\"], function(sp){ "
+      + "     vira_mute_saved = sp.mute;                  "
+      + "     sp.mute = undefined;                        "
+      + "   });                                           "
+      + " }, 500);                                        "
+    );
+  }
+
 });
 
 webview.addEventListener('console-message', function(e) {
