@@ -8,12 +8,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-}
-
-header,
-main,
-footer {
-  position: fixed;
+  position: relative;
 }
 
 header,
@@ -26,14 +21,12 @@ footer {
 }
 
 header {
-  top: 0;
   height: 30px;
 }
 
 main {
-  top: 60px;
-  bottom: 150px;
   width: 100%;
+  height: 100%;
 }
 
 main webview {
@@ -42,6 +35,9 @@ main webview {
 }
 
 footer {
+  position: absolute;
   bottom: 0;
   height: 120px;
+  bottom: 0;
+  opacity: 0.85;
 }
