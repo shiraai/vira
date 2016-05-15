@@ -1,3 +1,5 @@
+'use strict';
+
 // enable the developer tools for electron ui
 var electron_devtools = true;
 
@@ -5,6 +7,7 @@ const electron = require('electron'),
   ipcMain = require('electron').ipcMain,
   app = electron.app,
   BrowserWindow = electron.BrowserWindow;
+  require('electron-reload')(__dirname);
 
 let mainWindow;
 

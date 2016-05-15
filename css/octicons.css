@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'octicons';
+  src: url('../fonts/octicons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.octicon, .mega-octicon {
+  font: normal normal normal 16px/1 octicons;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mega-octicon { font-size: 32px; }
+.octicon-chevron-left:before { content: '\f0a4'} /*  */
+.octicon-unmute:before { content: '\f0ba'} /*  */
+.octicon-repo-sync:before,
+.octicon-sync:before { content: '\f087'} /*  */
+.octicon-home:before { content: '\f08d'} /*  */
