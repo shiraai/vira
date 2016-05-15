@@ -41,7 +41,7 @@ webview.addEventListener("dom-ready", function() {
   addEvent(window, "resize", function(event) {
     var w = window.innerWidth;
     var z = w / 320; // 320px is the 100% width
-    // this "abuses" the function they already have for us to
+    // this "abuses" the function they already have for us to resize it properly
     webview.executeJavaScript("window.deviceRatio = window.displayInitialize();");
     webview.executeJavaScript("window.Game = Game;window.fitScreenByZoom(window.deviceRatio);");
   });
