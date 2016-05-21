@@ -1,13 +1,15 @@
 'use strict';
 
 // enable the developer tools for electron ui
-var electron_devtools = true;
+var electron_devtools = false;
 
 const electron = require('electron'),
   ipcMain = require('electron').ipcMain,
   app = electron.app,
   BrowserWindow = electron.BrowserWindow;
   require('electron-reload')(__dirname);
+
+//app.commandLine.appendSwitch('proxy-server', 'http=localhost:8080'); for mitmproxy
 
 let mainWindow;
 
@@ -34,4 +36,9 @@ app.on('activate', function() {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+// live-reload
+require('electron-reload')(__dirname, {
+  electron: require('electron-prebuilt')
 });
