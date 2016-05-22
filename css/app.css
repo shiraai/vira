@@ -16,6 +16,7 @@ footer {
   background: #2b2b2b;
   width: 100%;
   color: #ebf6f7;
+  -webkit-app-region: drag;
 }
 
 header {

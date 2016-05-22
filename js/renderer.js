@@ -24,7 +24,7 @@ var addEvent = function(object, type, callback) {
 // add listener for the dom and then add the function for the windows resize
 webview.addEventListener("dom-ready", function() {
   if (webview_devtools) { webview.openDevTools(); }
-
+  
   // inject css
   fs.readFile('css/webview.css', 'utf8', function(err, data) {
     if (err) throw err;
