@@ -11,6 +11,18 @@ const electron = require('electron'),
 
 //app.commandLine.appendSwitch('proxy-server', 'http=localhost:8080'); for mitmproxy
 
+// should do this cleaner, currently just for windows builds
+// and because i'm not building on linux.
+// TODO
+if (process.platform === 'win32') {
+	var resourcesPath = process.resourcesPath + "/app"
+}
+
+if (process.platform === 'linux') {
+	var resourcesPath = __dirname
+	console.log("leenux")
+}
+
 let mainWindow;
 
 function createWindow() {

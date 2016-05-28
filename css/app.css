@@ -16,11 +16,11 @@ footer {
   background: #2b2b2b;
   width: 100%;
   color: #ebf6f7;
-  -webkit-app-region: drag;
 }
 
 header {
   height: 35px;
+  -webkit-app-region: drag;
 }
 
 .header-logo {
@@ -68,4 +68,13 @@ footer {
   float: right;
   letter-spacing: 15px;
   padding-right: 10px;
+}
+
+span {
+  -webkit-app-region: no-drag;
+}
+
+span:hover {
+    cursor: pointer;
+    color: #C85445;
 }

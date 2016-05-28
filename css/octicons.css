@@ -20,6 +20,7 @@
 .mega-octicon { font-size: 32px; }
 .octicon-chevron-left:before { content: '\f0a4'} /*  */
 .octicon-unmute:before { content: '\f0ba'} /*  */
+.octicon-mute:before { content: '\f080'} /*  */
 .octicon-repo-sync:before,
 .octicon-sync:before { content: '\f087'} /*  */
 .octicon-home:before { content: '\f08d'} /*  */

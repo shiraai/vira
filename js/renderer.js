@@ -1,4 +1,5 @@
 var fs = require('fs');
+var remote = require('remote');
 
 // enable the developer tools for the webview
 var webview_devtools = false;
@@ -26,12 +27,14 @@ webview.addEventListener("dom-ready", function() {
   if (webview_devtools) { webview.openDevTools(); }
   
   // inject css
+  // TODO: platform dependant resourcesPath
   fs.readFile('css/webview.css', 'utf8', function(err, data) {
     if (err) throw err;
     webview.insertCSS(data);
   });
 
   // inject touch events
+  // 
   fs.readFile('js/create-touch.js', 'utf8', function(err, data) {
     if (err) throw err;
     webview.executeJavaScript(data);
@@ -63,4 +66,46 @@ webview.addEventListener("dom-ready", function() {
 
 webview.addEventListener('console-message', function(e) {
   console.log('[webview] ', e.message);
+});
+
+// header button - close
+document.getElementById("btn-close").addEventListener("click", function (e) {
+  var window = remote.getCurrentWindow();
+  window.close();
+});
+
+// header button - minimize
+document.getElementById("btn-minimize").addEventListener("click", function (e) {
+  var window = remote.getCurrentWindow();
+  window.minimize();
+});
+
+// footer button - previous
+document.getElementById("btn-previous").addEventListener("click", function (e) {
+  webview.goBack();
+  console.log('previous');
+});
+
+// footer button - toggle sound
+document.getElementById("btn-sound").addEventListener("click", function (e) {
+    if(webview.isAudioMuted()){
+        document.getElementById("btn-sound").className = 'octicon octicon-unmute';
+        webview.setAudioMuted(false);
+    }
+    else{
+        document.getElementById("btn-sound").className = 'octicon octicon-mute';
+        webview.setAudioMuted(true);
+    }
+});
+
+// footer button - refresh
+document.getElementById("btn-refresh").addEventListener("click", function (e) {
+  webview.reload();
+  console.log('refresh');
+});
+
+// footer button - home
+document.getElementById("btn-home").addEventListener("click", function (e) {
+  webview.loadURL('http://gbf.game.mbga.jp/#mypage');
+  console.log('home');
 });
